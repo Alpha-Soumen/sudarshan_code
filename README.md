@@ -1,4 +1,4 @@
-# 🎓 EduEvent – Event Management System for Institutes
+# 🎓 EduEvent Hub – Event Management System for Institutes
 
 ## 🎯 Project Overview
 
@@ -37,9 +37,7 @@
 
 To get started with the project:
 
-### Clone the repository:
 
-```bash
 git clone https://github.com/Alpha-Soumen/sudarshan_code.git
 cd sudarshan_code
 Install dependencies:
@@ -92,9 +90,13 @@ Supabase: Realtime backend and auth (used in EduEvent MVP).
 Make sure you have Node.js installed.
 
 bash
+
 Copy
+
 Edit
+
 npm install
+
 💡 Usage
 To start the development server:
 
@@ -104,13 +106,9 @@ Edit
 npm run dev
 The application will be available at: http://localhost:3000
 
-🤝 Contributing
-Contributions are welcome! Feel free to fork this repository and submit pull requests for improvements, bug fixes, or additional features.
-
-📄 License
-This project is licensed under the MIT License.
 
 👨‍💻 Contributors
+
 Rohit Roy
 
 Soumen Bhunia
@@ -118,9 +116,3 @@ Soumen Bhunia
 Bishal Biswas
 
 Bhargav Pandit
-
-vbnet
-Copy
-Edit
-
-Let me know if you'd like badges, a deployment link, or setup for `.env` and Supabas
