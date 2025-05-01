@@ -1,4 +1,6 @@
 
+import type { Volunteer } from './volunteer'; // Import Volunteer type
+
 export interface Event {
   id: string;
   name: string;
@@ -9,7 +11,10 @@ export interface Event {
   roomAssignment: string;
   speaker: string;
   cost: number;
-  sponsorship?: string; // Optional field
+  sponsorship?: string; // Sponsor name/details (optional)
+  estimatedCost?: number; // Estimated cost of the event (optional)
+  sponsorshipAmount?: number; // Amount received from sponsor (optional)
+  assignedVolunteers?: string[]; // Array of Volunteer IDs assigned to this event
   // imageUrl?: string; // Potential future addition
 }
 
@@ -19,4 +24,5 @@ export interface Registration {
   userId: string; // Assuming some user identification
   registrationDate: string; // ISO string
   token: string;
+  documentUrl?: string; // Optional link to uploaded document
 }

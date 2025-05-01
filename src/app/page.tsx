@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CalendarPlus } from 'lucide-react';
+import type React from 'react'; // Import React for Fragment shorthand
 
 export default function Home() {
   return (
@@ -21,14 +22,17 @@ export default function Home() {
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 bg-gradient-to-t from-background via-transparent to-transparent">
            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary tracking-tight">
-            Discover & Join Events
+            Discover &amp; Join Events
           </h1>
           <p className="text-lg md:text-xl text-foreground/80 mb-6 max-w-2xl">
             Explore upcoming workshops, seminars, and conferences tailored for educational growth.
           </p>
           <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground transition-colors duration-300 shadow-lg">
             <Link href="/create-event">
-               <CalendarPlus className="mr-2 h-5 w-5" /> Host Your Event
+                {/* Wrap Link content in a span to ensure Button asChild gets a single element */}
+                <span className="flex items-center">
+                    <CalendarPlus className="mr-2 h-5 w-5" /> Host Your Event
+                </span>
             </Link>
           </Button>
         </div>

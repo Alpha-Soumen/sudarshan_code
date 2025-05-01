@@ -14,6 +14,9 @@ let events: Event[] = [
     speaker: 'Jane Doe',
     cost: 0,
     sponsorship: 'Tech Corp',
+    estimatedCost: 200,
+    sponsorshipAmount: 500,
+    assignedVolunteers: ['vol1', 'vol2'],
   },
   {
     id: 'evt2',
@@ -25,6 +28,9 @@ let events: Event[] = [
     roomAssignment: 'Room B205',
     speaker: 'John Smith',
     cost: 25,
+    estimatedCost: 150,
+    sponsorshipAmount: 100,
+    assignedVolunteers: ['vol3'],
   },
    {
     id: 'evt3',
@@ -37,6 +43,9 @@ let events: Event[] = [
     speaker: 'Alice Green',
     cost: 50,
     sponsorship: 'Vercel',
+    estimatedCost: 500,
+    sponsorshipAmount: 1000,
+    assignedVolunteers: [], // No volunteers assigned yet
   },
 ];
 
@@ -58,13 +67,14 @@ export async function getEventById(id: string): Promise<Event | undefined> {
   return event ? JSON.parse(JSON.stringify(event)) : undefined;
 }
 
-export async function createEvent(newEventData: Omit<Event, 'id' | 'registeredSeats'>): Promise<Event> {
+export async function createEvent(newEventData: Omit<Event, 'id' | 'registeredSeats' | 'assignedVolunteers'>): Promise<Event> {
   // Simulate API delay and ID generation
   await new Promise((resolve) => setTimeout(resolve, 150));
   const newEvent: Event = {
     ...newEventData,
     id: `evt${Date.now()}`, // Simple ID generation
     registeredSeats: 0,
+    assignedVolunteers: [], // Initialize as empty array
   };
   events.push(newEvent);
   console.log('Created new event:', newEvent);
@@ -73,7 +83,12 @@ export async function createEvent(newEventData: Omit<Event, 'id' | 'registeredSe
 
 // --- Registration Functions ---
 
-export async function registerForEvent(eventId: string, userId: string): Promise<{ success: boolean; message: string; registration?: Registration }> {
+// Updated to accept optional documentUrl
+export async function registerForEvent(
+    eventId: string,
+    userId: string,
+    documentUrl?: string // Optional document URL
+): Promise<{ success: boolean; message: string; registration?: Registration }> {
   // Simulate API delay
   await new Promise((resolve) => setTimeout(resolve, 200));
 
@@ -107,6 +122,7 @@ export async function registerForEvent(eventId: string, userId: string): Promise
     userId,
     registrationDate: new Date().toISOString(),
     token,
+    documentUrl, // Add the document URL if provided
   };
   registrations.push(newRegistration);
 
@@ -132,3 +148,55 @@ export async function getRegistrationsForEvent(eventId: string): Promise<Registr
   await new Promise((resolve) => setTimeout(resolve, 100));
   return JSON.parse(JSON.stringify(registrations.filter(r => r.eventId === eventId)));
 }
+
+// --- Volunteer Assignment ---
+export async function assignVolunteerToEvent(eventId: string, volunteerId: string): Promise<{ success: boolean; message: string }> {
+    await new Promise(resolve => setTimeout(resolve, 50)); // Simulate delay
+    const eventIndex = events.findIndex(e => e.id === eventId);
+    if (eventIndex === -1) {
+        return { success: false, message: "Event not found." };
+    }
+    if (!events[eventIndex].assignedVolunteers) {
+        events[eventIndex].assignedVolunteers = [];
+    }
+    if (!events[eventIndex].assignedVolunteers?.includes(volunteerId)) {
+        events[eventIndex].assignedVolunteers?.push(volunteerId);
+        console.log(`Assigned volunteer ${volunteerId} to event ${eventId}`);
+        return { success: true, message: "Volunteer assigned successfully." };
+    }
+    return { success: false, message: "Volunteer already assigned to this event." };
+}
+
+export async function removeVolunteerFromEvent(eventId: string, volunteerId: string): Promise<{ success: boolean; message: string }> {
+    await new Promise(resolve => setTimeout(resolve, 50)); // Simulate delay
+    const eventIndex = events.findIndex(e => e.id === eventId);
+    if (eventIndex === -1) {
+        return { success: false, message: "Event not found." };
+    }
+    const volunteerIndex = events[eventIndex].assignedVolunteers?.indexOf(volunteerId);
+    if (volunteerIndex !== undefined && volunteerIndex > -1) {
+        events[eventIndex].assignedVolunteers?.splice(volunteerIndex, 1);
+        console.log(`Removed volunteer ${volunteerId} from event ${eventId}`);
+        return { success: true, message: "Volunteer removed successfully." };
+    }
+    return { success: false, message: "Volunteer not found in this event." };
+}
+
+// --- Event Cost/Sponsorship Update ---
+export async function updateEventFinancials(eventId: string, financials: { estimatedCost?: number; sponsorshipAmount?: number }): Promise<{ success: boolean; message: string, event?: Event }> {
+    await new Promise(resolve => setTimeout(resolve, 50));
+    const eventIndex = events.findIndex(e => e.id === eventId);
+    if (eventIndex === -1) {
+        return { success: false, message: "Event not found." };
+    }
+    if (financials.estimatedCost !== undefined) {
+        events[eventIndex].estimatedCost = financials.estimatedCost;
+    }
+     if (financials.sponsorshipAmount !== undefined) {
+        events[eventIndex].sponsorshipAmount = financials.sponsorshipAmount;
+    }
+    console.log(`Updated financials for event ${eventId}:`, events[eventIndex]);
+    return { success: true, message: "Financials updated successfully.", event: JSON.parse(JSON.stringify(events[eventIndex])) };
+}
+
+// --- Add more mock data/functions as needed for other features ---
