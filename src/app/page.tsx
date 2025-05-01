@@ -1,3 +1,4 @@
+
 import EventList from '@/components/event-list';
 import { Toaster } from "@/components/ui/toaster";
 import Image from 'next/image';
@@ -29,7 +30,6 @@ export default function Home() {
           </p>
           <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground transition-colors duration-300 shadow-lg">
             <Link href="/create-event">
-                {/* Wrap Link content in a span to ensure Button asChild gets a single element */}
                 <span className="flex items-center">
                     <CalendarPlus className="mr-2 h-5 w-5" /> Host Your Event
                 </span>

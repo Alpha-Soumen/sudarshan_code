@@ -11,7 +11,6 @@ export default function CreateEventPage() {
           <h1 className="text-3xl md:text-4xl font-bold text-primary">Create New Event</h1>
          <Button asChild variant="outline" size="sm">
            <Link href="/">
-            {/* Wrap content in a span */}
             <span className="flex items-center">
              <ArrowLeft className="mr-2 h-4 w-4" /> Back to Events
             </span>

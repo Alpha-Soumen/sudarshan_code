@@ -65,7 +65,7 @@ export default function RootLayout({
                      {showAdminLink && (
                          <Button asChild variant="ghost" size="sm">
                            <Link href="/admin">
-                              <span className="flex items-center"> {/* Wrap content */}
+                              <span className="flex items-center">
                                 <UserCog className="mr-1 h-4 w-4" /> Admin
                               </span>
                            </Link>
@@ -75,7 +75,7 @@ export default function RootLayout({
                      {showStudentLink && (
                          <Button asChild variant="ghost" size="sm">
                            <Link href="/student">
-                              <span className="flex items-center"> {/* Wrap content */}
+                              <span className="flex items-center">
                                 <LayoutDashboard className="mr-1 h-4 w-4" /> Student
                               </span>
                            </Link>
@@ -85,7 +85,7 @@ export default function RootLayout({
                        {showCertificateLink && (
                          <Button asChild variant="ghost" size="sm">
                            <Link href="/student/certificates"> {/* Corrected path */}
-                              <span className="flex items-center"> {/* Wrap content */}
+                              <span className="flex items-center">
                                 <Award className="mr-1 h-4 w-4" /> Certificates
                               </span>
                            </Link>
@@ -93,9 +93,8 @@ export default function RootLayout({
                      )}
                       {/* Create Event Button */}
                      {hasPermission(currentUser, [UserRole.SuperAdmin, UserRole.EventManager]) && ( // Only show if allowed to create
-                         <Button asChild variant="secondary" size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground transition-colors duration-300 mt-1 sm:mt-0"> {/* Add margin-top on small screens if wrapped */}
+                         <Button asChild variant="secondary" size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground transition-colors duration-300 mt-1 sm:mt-0">
                              <Link href="/create-event">
-                               {/* Wrap Link content in a span to ensure Button asChild gets a single element */}
                                <span className="flex items-center">
                                  <PlusCircle className="mr-2 h-4 w-4" /> Create Event
                                </span>
