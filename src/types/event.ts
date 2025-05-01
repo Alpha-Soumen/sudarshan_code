@@ -10,6 +10,7 @@ export interface Event {
   speaker: string;
   cost: number;
   sponsorship?: string; // Optional field
+  // imageUrl?: string; // Potential future addition
 }
 
 export interface Registration {

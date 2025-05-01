@@ -10,7 +10,8 @@ import type { Event, Registration } from '@/types/event';
 import { registerForEvent } from '@/lib/events';
 import { CalendarDays, Users, MapPin, Mic, DollarSign, Building, Ticket, Loader2, Info, CheckCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton'; // Import Skeleton
+import { Skeleton } from '@/components/ui/skeleton'; // Correct import for Skeleton
+import Image from 'next/image'; // Import next/image
 
 interface EventDetailsProps {
   event: Event;
@@ -89,15 +90,26 @@ export default function EventDetails({ event: initialEvent }: EventDetailsProps)
 
   // Display loading state for seats until client-side calculation is done
   const seatDisplay = remainingSeats === null || isFull === null
-    ? <Skeleton className="h-5 w-24 inline-block" />
+    ? <Skeleton className="h-5 w-24 inline-block" /> // Use the imported Skeleton
     : isFull
       ? <Badge variant="destructive">Event Full</Badge>
       : `${remainingSeats} / ${event.totalSeats} seats available`;
 
 
   return (
-    <Card className="max-w-3xl mx-auto shadow-lg">
-      <CardHeader>
+    <Card className="max-w-3xl mx-auto shadow-lg overflow-hidden"> {/* Added overflow-hidden */}
+       {/* Event Image */}
+       <div className="relative h-48 w-full">
+         <Image
+           src={`https://picsum.photos/seed/${event.id}/800/300`} // Use event ID for consistent placeholder
+           alt={`${event.name} banner`}
+           layout="fill"
+           objectFit="cover"
+           data-ai-hint="event banner"
+         />
+       </div>
+
+      <CardHeader className="pt-6"> {/* Added padding top */}
         <CardTitle className="text-3xl font-bold text-primary">{event.name}</CardTitle>
         <CardDescription className="flex items-center text-md text-muted-foreground pt-2">
           <CalendarDays className="mr-2 h-5 w-5" />
