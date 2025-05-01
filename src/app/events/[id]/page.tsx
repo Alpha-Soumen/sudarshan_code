@@ -23,7 +23,10 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
         </p>
         <Button asChild variant="default" size="lg"> {/* Changed variant and size */}
           <Link href="/">
-             <ArrowLeft className="mr-2 h-4 w-4" /> Go Back to Events
+             {/* Wrap content in a span */}
+             <span className="flex items-center">
+                 <ArrowLeft className="mr-2 h-4 w-4" /> Go Back to Events
+             </span>
           </Link>
         </Button>
       </div>
@@ -35,7 +38,10 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
        <div className="mb-6"> {/* Wrapper for back button */}
          <Button asChild variant="outline" size="sm">
            <Link href="/">
-             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Events
+             {/* Wrap content in a span */}
+             <span className="flex items-center">
+                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Events
+             </span>
            </Link>
          </Button>
        </div>

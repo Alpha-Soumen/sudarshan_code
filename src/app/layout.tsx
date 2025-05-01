@@ -1,4 +1,5 @@
 
+
 'use client'; // Need client hooks for theme and potentially user role check
 
 // Removed type import for Metadata as it's now defined in head directly
@@ -64,7 +65,9 @@ export default function RootLayout({
                      {showAdminLink && (
                          <Button asChild variant="ghost" size="sm">
                            <Link href="/admin">
-                             <UserCog className="mr-1 h-4 w-4" /> Admin
+                              <span className="flex items-center"> {/* Wrap content */}
+                                <UserCog className="mr-1 h-4 w-4" /> Admin
+                              </span>
                            </Link>
                          </Button>
                      )}
@@ -72,7 +75,9 @@ export default function RootLayout({
                      {showStudentLink && (
                          <Button asChild variant="ghost" size="sm">
                            <Link href="/student">
-                             <LayoutDashboard className="mr-1 h-4 w-4" /> Student
+                              <span className="flex items-center"> {/* Wrap content */}
+                                <LayoutDashboard className="mr-1 h-4 w-4" /> Student
+                              </span>
                            </Link>
                          </Button>
                      )}
@@ -80,7 +85,9 @@ export default function RootLayout({
                        {showCertificateLink && (
                          <Button asChild variant="ghost" size="sm">
                            <Link href="/student/certificates"> {/* Corrected path */}
-                             <Award className="mr-1 h-4 w-4" /> Certificates
+                              <span className="flex items-center"> {/* Wrap content */}
+                                <Award className="mr-1 h-4 w-4" /> Certificates
+                              </span>
                            </Link>
                          </Button>
                      )}
@@ -88,7 +95,10 @@ export default function RootLayout({
                      {hasPermission(currentUser, [UserRole.SuperAdmin, UserRole.EventManager]) && ( // Only show if allowed to create
                          <Button asChild variant="secondary" size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground transition-colors duration-300 mt-1 sm:mt-0"> {/* Add margin-top on small screens if wrapped */}
                              <Link href="/create-event">
+                               {/* Wrap Link content in a span to ensure Button asChild gets a single element */}
+                               <span className="flex items-center">
                                  <PlusCircle className="mr-2 h-4 w-4" /> Create Event
+                               </span>
                              </Link>
                          </Button>
                       )}
