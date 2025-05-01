@@ -11,6 +11,7 @@ import { format, addDays, subDays } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Loader2, Utensils, AlertTriangle } from 'lucide-react';
 import Image from 'next/image'; // Import next/image
+import { Badge } from '@/components/ui/badge'; // Import Badge
 
 interface MenuDisplayProps {
     initialDate?: Date;

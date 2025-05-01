@@ -19,8 +19,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, AlertCircle, Utensils, CalendarPlus, ScanLine, Check, X } from 'lucide-react';
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { format, parse } from 'date-fns';
-import { Badge } from '@/components/ui/badge';
+import { format } from 'date-fns';
+import { Badge } from '@/components/ui/badge'; // Import Badge
 
 interface CanteenAdminProps {
     // Props, if any
