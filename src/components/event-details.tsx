@@ -10,6 +10,7 @@ import type { Event, Registration } from '@/types/event';
 import { registerForEvent } from '@/lib/events';
 import { CalendarDays, Users, MapPin, Mic, DollarSign, Building, Ticket, Loader2, Info, CheckCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton'; // Import Skeleton
 
 interface EventDetailsProps {
   event: Event;
