@@ -107,7 +107,12 @@ export async function assignVolunteerTask(volunteerId: string, eventId: string, 
          volunteers[volIndex].tasks = {};
      }
 
-    volunteers[volIndex].tasks![eventId] = task;
-    console.log(`Assigned task "${task}" to volunteer ${volunteerId} for event ${eventId}`);
+    const trimmedTask = task.trim(); // Trim the task input
+    if (!trimmedTask) {
+        return { success: false, message: "Task cannot be empty." };
+    }
+
+    volunteers[volIndex].tasks![eventId] = trimmedTask; // Save trimmed task
+    console.log(`Assigned task "${trimmedTask}" to volunteer ${volunteerId} for event ${eventId}`);
     return { success: true, message: "Task assigned." };
 }

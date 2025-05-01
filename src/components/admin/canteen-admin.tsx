@@ -90,8 +90,9 @@ export default function CanteenAdminPanel({}: CanteenAdminProps) {
         e.preventDefault();
         setIsSubmittingMenu(true); // Reuse submitting state or add a new one
         const formData = new FormData(e.currentTarget);
+        const itemName = (formData.get('itemName') as string)?.trim(); // Trim name
         const newItemData: Omit<MenuItem, 'id'> = {
-            name: formData.get('itemName') as string,
+            name: itemName,
             price: parseFloat(formData.get('itemPrice') as string),
             category: formData.get('itemCategory') as MenuItem['category'],
             isVeg: formData.get('itemIsVeg') === 'on',
@@ -100,7 +101,7 @@ export default function CanteenAdminPanel({}: CanteenAdminProps) {
         };
 
          if (!newItemData.name || isNaN(newItemData.price) || !newItemData.category) {
-             toast({ title: "Missing Fields", description: "Please fill in Item Name, Price, and Category.", variant: "destructive"});
+             toast({ title: "Missing Fields", description: "Please fill in Item Name (must not be empty), Price, and Category.", variant: "destructive"});
              setIsSubmittingMenu(false);
              return;
          }
@@ -146,14 +147,15 @@ export default function CanteenAdminPanel({}: CanteenAdminProps) {
 
 
     const handleValidateToken = async () => {
-        if (!tokenToValidate.trim()) {
+        const trimmedToken = tokenToValidate.trim(); // Trim token
+        if (!trimmedToken) {
             toast({ title: "No Token ID", description: "Please enter a Token ID to validate.", variant: "destructive" });
             return;
         }
         setIsValidating(true);
         setValidationResult(null); // Clear previous result
         try {
-            const result = await validateFoodToken(tokenToValidate.trim());
+            const result = await validateFoodToken(trimmedToken); // Use trimmed token
             setValidationResult(result);
              if (result.success) {
                  toast({ title: "Validation Successful", description: `Token ${result.token?.id.substring(0, 8)}... validated.` });

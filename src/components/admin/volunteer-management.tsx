@@ -143,21 +143,22 @@ export default function VolunteerManagementPanel({}: VolunteerManagementProps) {
   const handleTaskSave = async () => {
       if (!editingTask) return;
       const { volunteerId, eventId, currentTask } = editingTask;
+      const trimmedTask = currentTask.trim(); // Trim task input
 
       // Prevent saving empty task if not intended
-      if (!currentTask?.trim()) {
+      if (!trimmedTask) {
           toast({ title: "Task Cannot Be Empty", description: "Please enter a task or cancel.", variant: "destructive" });
           return;
       }
 
       try {
-          const result = await assignVolunteerTask(volunteerId, eventId, currentTask);
+          const result = await assignVolunteerTask(volunteerId, eventId, trimmedTask); // Use trimmed task
           if (result.success) {
               toast({ title: "Task Assigned", description: `Task updated for event.` });
               // Update local state
               setVolunteers(prev => prev.map(vol => {
                   if (vol.id === volunteerId) {
-                      return { ...vol, tasks: { ...(vol.tasks || {}), [eventId]: currentTask } };
+                      return { ...vol, tasks: { ...(vol.tasks || {}), [eventId]: trimmedTask } }; // Save trimmed task
                   }
                   return vol;
               }));

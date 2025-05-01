@@ -47,7 +47,12 @@ export async function getMenuItemById(id: string): Promise<MenuItem | undefined>
 
 export async function addMenuItem(itemData: Omit<MenuItem, 'id'>): Promise<MenuItem> {
     await new Promise(resolve => setTimeout(resolve, 100));
-    const newItem: MenuItem = { ...itemData, id: `item${Date.now()}` };
+    // Trim name before saving
+    const trimmedName = itemData.name.trim();
+    if (!trimmedName) {
+        throw new Error("Menu item name cannot be empty.");
+    }
+    const newItem: MenuItem = { ...itemData, name: trimmedName, id: `item${Date.now()}` };
     menuItems.push(newItem);
     console.log("Added Menu Item:", newItem);
     return JSON.parse(JSON.stringify(newItem));
@@ -118,7 +123,8 @@ export async function generateFoodToken(userId: string, menuItemId: string, meal
 
 export async function validateFoodToken(tokenId: string): Promise<{ success: boolean; message: string; token?: FoodToken }> {
   await new Promise((resolve) => setTimeout(resolve, 50));
-  const tokenIndex = foodTokens.findIndex(t => t.id === tokenId);
+  const trimmedTokenId = tokenId.trim(); // Trim token ID
+  const tokenIndex = foodTokens.findIndex(t => t.id === trimmedTokenId);
 
   if (tokenIndex === -1) {
     return { success: false, message: 'Token not found.' };
