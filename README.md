@@ -1,10 +1,8 @@
-### 📌 Here is a **detailed and professionally enhanced GitHub README** for your **EduEvent Hub** project, incorporating all key aspects from your document.
-
----
 
 # 🎓 EduEvent Hub – Comprehensive Event Management System for Educational Institutes
 
-### 📌 Live Demo: [EduEvent Hub on Vercel](https://your-vercel-link.com)
+### 📌 Live Demo: [EduEvent Hub on Vercel](https://event-management-system-7fal84ugy-sudarshs-projects.vercel.app/)
+
 
 ---
 
@@ -205,9 +203,22 @@ pnpm build
 
 ## 🌐 Live Demo
 
-[EduEvent Hub on Vercel](https://your-vercel-link.com)
+[EduEvent Hub on Vercel](https://event-management-system-7fal84ugy-sudarshs-projects.vercel.app/)
 
 ---
+
+
+
+### 🚀 Future Enhancements
+
+* ✅ Enhanced search and filtering options.
+* ✅ Advanced user authentication (OAuth with Google, Facebook).
+* ✅ Real-time chat support for event discussions.
+* ✅ Admin dashboard for event management.
+* ✅ Analytics dashboard for tracking user engagement.
+
+---
+
 
 ## 🤝 Contributing
 
@@ -251,35 +262,13 @@ This project is licensed under the **MIT License**. See the [LICENSE.md](LICENSE
 
 ## 👨‍💻 Developed By:
 
-* **Rohit Roy**
-* **Soumen Bhunia**
-* **Bishal Biswas**
-* **Bhargav Pandit**
+* **Rohit Roy:** [LinkedIn](https://www.linkedin.com/in/rohit-roy-ur-welcome/)
+* **Soumen Bhunia:** [LinkedIn](https://www.linkedin.com/in/soumen-bhunia-2b8799293/)
+* **Bishal Biswas:** [LinkedIn](https://www.linkedin.com/in/bishal-biswas-9a5679293/)
+* **Bhargav Pandit:** [LinkedIn](https://www.linkedin.com/in/bhargav-pandit-85694a217/)
 
 ---
 
-## 📩 Support
 
-For any queries or issues, please open an issue on GitHub or contact the developers directly.
 
----
 
-### 🚀 Future Enhancements
-
-* ✅ Enhanced search and filtering options.
-* ✅ Advanced user authentication (OAuth with Google, Facebook).
-* ✅ Real-time chat support for event discussions.
-* ✅ Admin dashboard for event management.
-* ✅ Analytics dashboard for tracking user engagement.
-
----
-
-### 📌 Remember:
-
-This README is designed to be clear, detailed, and professional, making your GitHub project highly accessible and maintainable.
-
-Would you like me to format this into a **markdown file (README.md)** and provide it?
-
-Would you also like me to suggest a clean and visually appealing folder structure for your project?
-
-Let me know. 🙂
