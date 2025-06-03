@@ -2,7 +2,10 @@
 # 🎓 EduEvent Hub – Comprehensive Event Management System for Educational Institutes
 
 ### 📌 Live Demo: [EduEvent Hub on Vercel](https://event-management-system-7fal84ugy-sudarshs-projects.vercel.app/)
+🖼️ Website Preview  
+![EduEvent Hub Screenshot](https://github.com/user-attachments/assets/938ffab6-2b74-4660-87f2-be284ede79d1)
 
+📄 PDF Version: [Download Website Preview (PDF)](https://github.com/user-attachments/files/20576337/screencapture-6000-idx-studio-1746077234203-cluster-fkltigo73ncaixtmokrzxhwsfc-cloudworkstations-dev-2025-05-01-15_15_28.pdf)
 
 ---
 
